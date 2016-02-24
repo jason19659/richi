@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="pw.jason19659.richi.dao.LevelMapper" >
+  <resultMap id="BaseResultMap" type="pw.jason19659.richi.model.Level" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="max_point" property="maxPoint" jdbcType="INTEGER" />
+    <result column="init_point" property="initPoint" jdbcType="INTEGER" />
+    <result column="level_rank" property="levelRank" jdbcType="INTEGER" />
+    <result column="first_point" property="firstPoint" jdbcType="INTEGER" />
+    <result column="second_point" property="secondPoint" jdbcType="INTEGER" />
+    <result column="third_point" property="thirdPoint" jdbcType="INTEGER" />
+    <result column="forth_point" property="forthPoint" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, name, max_point, init_point, level_rank, first_point, second_point, third_point, 
+    forth_point
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from level
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select 
+    <include refid="Base_Column_List" />
+    from level
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from level
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="pw.jason19659.richi.model.Level" >
+    insert into level (id, name, max_point, 
+      init_point, level_rank, first_point, 
+      second_point, third_point, forth_point
+      )
+    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{maxPoint,jdbcType=INTEGER}, 
+      #{initPoint,jdbcType=INTEGER}, #{levelRank,jdbcType=INTEGER}, #{firstPoint,jdbcType=INTEGER}, 
+      #{secondPoint,jdbcType=INTEGER}, #{thirdPoint,jdbcType=INTEGER}, #{forthPoint,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="pw.jason19659.richi.model.Level" >
+    insert into level
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="maxPoint != null" >
+        max_point,
+      </if>
+      <if test="initPoint != null" >
+        init_point,
+      </if>
+      <if test="levelRank != null" >
+        level_rank,
+      </if>
+      <if test="firstPoint != null" >
+        first_point,
+      </if>
+      <if test="secondPoint != null" >
+        second_point,
+      </if>
+      <if test="thirdPoint != null" >
+        third_point,
+      </if>
+      <if test="forthPoint != null" >
+        forth_point,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="maxPoint != null" >
+        #{maxPoint,jdbcType=INTEGER},
+      </if>
+      <if test="initPoint != null" >
+        #{initPoint,jdbcType=INTEGER},
+      </if>
+      <if test="levelRank != null" >
+        #{levelRank,jdbcType=INTEGER},
+      </if>
+      <if test="firstPoint != null" >
+        #{firstPoint,jdbcType=INTEGER},
+      </if>
+      <if test="secondPoint != null" >
+        #{secondPoint,jdbcType=INTEGER},
+      </if>
+      <if test="thirdPoint != null" >
+        #{thirdPoint,jdbcType=INTEGER},
+      </if>
+      <if test="forthPoint != null" >
+        #{forthPoint,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="pw.jason19659.richi.model.Level" >
+    update level
+    <set >
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="maxPoint != null" >
+        max_point = #{maxPoint,jdbcType=INTEGER},
+      </if>
+      <if test="initPoint != null" >
+        init_point = #{initPoint,jdbcType=INTEGER},
+      </if>
+      <if test="levelRank != null" >
+        level_rank = #{levelRank,jdbcType=INTEGER},
+      </if>
+      <if test="firstPoint != null" >
+        first_point = #{firstPoint,jdbcType=INTEGER},
+      </if>
+      <if test="secondPoint != null" >
+        second_point = #{secondPoint,jdbcType=INTEGER},
+      </if>
+      <if test="thirdPoint != null" >
+        third_point = #{thirdPoint,jdbcType=INTEGER},
+      </if>
+      <if test="forthPoint != null" >
+        forth_point = #{forthPoint,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="pw.jason19659.richi.model.Level" >
+    update level
+    set name = #{name,jdbcType=VARCHAR},
+      max_point = #{maxPoint,jdbcType=INTEGER},
+      init_point = #{initPoint,jdbcType=INTEGER},
+      level_rank = #{levelRank,jdbcType=INTEGER},
+      first_point = #{firstPoint,jdbcType=INTEGER},
+      second_point = #{secondPoint,jdbcType=INTEGER},
+      third_point = #{thirdPoint,jdbcType=INTEGER},
+      forth_point = #{forthPoint,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
